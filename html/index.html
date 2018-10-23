@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-POYwD7xcktv3gUeZO5s/9nUbRJG/WOmV6jfEGikMJu77LGYO8Rfs2X7URG822aum"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="webfonts/oduda-bold.css"> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <title>Chirpy</title>
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-top border-bottom border-primary mt-3">
+        <!--  -->
+
+        <div class="container">
+
+            <div class="col font-weight-bold pl-0 text-primary py-3">
+                <h4>Chirpy</h4>
+            </div>
+
+            <div class="col">
+                <i id="bird" class="fal fa-kiwi-bird fa-2x text-primary py-3 pr-0"></i>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="bg-light">
+
+        <div class="container">
+            
+            <div class="row">
+                
+                <div class="col-9">
+                        
+                    <button id="newPost" type="button" class="btn btn-outline-primary mt-5">
+                        New Chirp
+                    </button>
+
+                    <button id="hideForm" type="button" class="btn btn-outline-primary mt-5 ml-1">
+                        Hide Form
+                    </button>
+
+                    <!-- <i id="friends" class="fal fa-user-friends fa-2x mt-5"></i> -->
+
+                    <br>
+                    <br>
+
+                    <div id="form-div">
+                        
+                        <form class="form" action="">
+                            <div class="form-group">
+                                <label for="" class="control-form">Title</label>
+                                <input id="formTitle" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Content</label>
+                                <textarea class="form-control" name="description" id="formContent" cols="30" rows="10"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Type</label>
+                                <input type="text" class="form-control" id="formType">
+                            </div>
+                            <div class="form-group">
+                                <button id="formButton" type="button" class="btn btn-lg btn-primary">
+                                    submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div>
+                        <ul class="list-group" id="showPosts"></ul>
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-3 mt-5">
+                    <div id="content">
+                        <div id="userInfo">
+                            <h5 class="text-primary">Friends</h5>
+                                <ul id="friendList" class="list-group mt-4 align-top">
+                                    <!-- <li class="list-group-item">
+                                        <img class="rounded" src="http://placehold.it/50/50" alt="dumby image">
+                                        <p>Sam</p>
+                                    </li> -->
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+   <!----------- FOOTER ----------->
+<!-- 
+   <footer class="footer bg-dark p-5">Chirpy</footer> -->
+
+    <script src="../assets/js/index.js"></script>
+    <script src="../assets/js/promise.js"></script>
+    <script src="../assets/js/displayFriends.js"></script>
+</body>
+
+
+</html>
