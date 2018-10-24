@@ -3,10 +3,22 @@ const newPost = document.getElementById('newPost');
 const formDiv = document.getElementById('form-div');
 const hideForm = document.getElementById('hideForm');
 
+
+
+let setUser = function() {
+    let currentUser = JSON.parse(localStorage.getItem("user")); 
+    document.getElementById("currentUser").innerHTML = currentUser.profile_name;
+}
+
+window.addEventListener("DOMContentLoaded", setUser);
+
 let isEdit = null;
+
+hideForm.style.display = "none"
 
 newPost.addEventListener('click', () => {
     formDiv.style.display = "unset";
+    hideForm.style.display = "unset"
     isEdit = null;
 })
 
@@ -17,7 +29,9 @@ hideForm.addEventListener('click', () => {
     title.value = "";
     body.value = "";
     type.value = "";
+    newPost.style.display = "unset";
     formDiv.style.display = "none";
+    hideForm.style.display = "none";
     isEdit = null;
 })
 
@@ -26,6 +40,7 @@ const deletePost = (event) => {
     console.log(typeof event.target.id);
     let id = Number(event.target.id);
     axios.delete(`http://localhost:3000/content/${id}`).then(results => {
+        
 
         console.log(results);
         showPosts();
@@ -58,13 +73,18 @@ const showPosts = () => {
             results.data.forEach(content => {
                 list.innerHTML += renderPost(content);
             })
+        }).catch(err => {
+            const list = document.getElementById('showPosts');
+            list.innerHTML = `<div></div>`;
         })
     grabFriends(1);
 }
 
 
+//////// FORM //////////
 
 formButton.addEventListener('click', () => {
+    // CHECK IF USER IS LOGGED IN
     /**
      * {
         "id": 17,
@@ -85,6 +105,7 @@ formButton.addEventListener('click', () => {
             title: title.value,
             body: body.value,
             type: type.value,
+            /// local storage.......
             user_id: 1
         }).then(data => {
             isEdit = null;
@@ -98,6 +119,8 @@ formButton.addEventListener('click', () => {
         })
         return;
     }
+
+    //////// ----------- UPDATE USER ID ------------ //////////
 
     axios.post('http://localhost:3000/content', {
             title: title.value,
@@ -129,36 +152,19 @@ const renderPost = (content) => {
       <br>
       <small class="text-muted">
         <cite>${content.type}</cite>
-    </small>
-    <br>
-    <br>
-    <button type="button" onClick="editPost(${content.id})" class="btn btn-outline-dark btn-sm">Edit</button>
-    <button id=${content.id} type="button" onClick="deletePost(event)"class="btn btn-outline-danger btn-sm">Delete</button>
-    
+      </small>
+      <br>
+      <br>
+      <div class="text-right">
+      <i onClick="editPost(${content.id})" class="far fa-edit fa-1x mr-2"></i>
+      <i id=${content.id} onClick="deletePost(event)" class="fas fa-times fa-1x text-danger"></i>
+      </div>
     </div>
-  </div>
+    </div>
   <span class="border-bottom-0"></span>
   <br>
     `
 }
-
-
-
-/* <div id="edit-form> 
-       <form/>
-       <submit>
-       <input/>
-       </div> */
-
-
-
-// <div class="card w-50">
-//   <div class="card-body">
-//     <h5 class="card-title">Card title</h5>
-//     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-//     <a href="#" class="btn btn-primary">Button</a>
-//   </div>
-// </div>
 
 
 
@@ -168,6 +174,7 @@ const renderPost = (content) => {
 const grabFriends = (id) => {
     axios.get(`http://localhost:3000/users/${id}/followers`).then(result => {
         const list = document.getElementById('friendList');
+        list.innerHTML = "";
         result.data.forEach(friend => {
             list.innerHTML += renderFriend(friend);
         })
@@ -179,11 +186,20 @@ const grabFriends = (id) => {
 
 const renderFriend = (friend) => {
     return `<li class="list-group-item text-center border border-primary">
-                <i class="fal fa-smile fa-3x p-2" style="color:purple"></i>
+                <i class="fal fa-smile-wink fa-3x p-3" style="color:purple"></i>
                 <p>${friend.profile_name}</p>
                 <p class="text-secondary">${friend.city}</p>
-                <i class="fas fa-times fa-1x text-danger"></i>
+                <i id="deleteFriend" class="fal fa-skull-crossbones fa-1x text-danger" onClick="deleteFriend(event)"></i>
             </li>`
+}
+
+const deleteFriend = (event) => {
+    let id = Number(event.target.id);
+    axios.delete(`http://localhost:3000/users/${id}/followers`).then(results => {
+
+        console.log(results);
+        showPosts();
+    })
 }
 
 // <img class="rounded" src="http://placehold.it/50/50" alt="${friend.first_name} ${friend.last_name}">
@@ -193,3 +209,4 @@ const renderFriend = (friend) => {
  * INITIALIZE FUNCTION
  */
 showPosts();
+

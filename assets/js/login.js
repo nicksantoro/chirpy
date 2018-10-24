@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
             password
         })
         .then( user => {
-            console.log(user);
-            
+            // console.log(user);
+            localStorage.setItem("user", JSON.stringify(user.data[0]));
+            window.location.href = "./index.html";  
         })
         .catch( error => {
             console.error(error);
@@ -31,4 +32,5 @@ document.addEventListener("DOMContentLoaded", () => {
     //     })
     // })
 })
+
 
