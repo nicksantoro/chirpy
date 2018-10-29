@@ -8,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-   
+
     <link rel="stylesheet" href="../assets/css/webfonts/oduda-bold.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-POYwD7xcktv3gUeZO5s/9nUbRJG/WOmV6jfEGikMJu77LGYO8Rfs2X7URG822aum"
         crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-    
+
     <!-- <link rel="stylesheet" type="text/css" href="webfonts/oduda-bold.css"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -30,42 +30,58 @@
 <body id="logbody">
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-primary">
-        <!--  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary border-bottom border-primary">
 
         <div class="container">
 
-            <div class="col-4 font-weight-bold pl-0 text-primary py-3">
-                <h3 class="chirpyIcon">Chirpy</h3>
+            <div class="col-4 font-weight-bold pl-0 text-white py-3">
+                <h3 id="chirp" class="chirpyIcon">Chirpy</h3>
             </div>
 
             <div class="col-4 text-center">
-                <i id="bird" class="fal fa-kiwi-bird fa-2x text-primary py-3 pr-0"></i>
+                <i id="bird" class="fal fa-kiwi-bird fa-2x text-white py-3 pr-0"></i>
             </div>
 
             <div class="col-4 text-right">
-                <h5 id="currentUser" style="color:purple"></h5>
+                <h5 id="currentUser" style="color: white"></h5>
             </div>
 
         </div>
 
     </nav>
 
-    <main class="bg-light">
+    <main style="background-color:LIGHTSKYBLUE">
 
         <div class="container">
-            
+
             <div class="row">
-                
+
                 <div class="col-9">
-                        
-                    <button id="newPost" type="button" class="btn btn-outline-primary mt-5">
+
+                    <button id="newPost" type="button" class="btn btn-primary mt-5">
                         New Chirp
                     </button>
 
-                    <button id="hideForm" type="button" class="btn btn-outline-primary mt-5 ml-1">
+                    <button id="hideForm" type="button" class="btn btn-outline-danger mt-5 ml-1">
                         Hide Form
                     </button>
+
+                    <!-- <button id="theme" type="button" class="btn btn-outline-secondary mt-5 ml-1">
+                        Theme
+                    </button>
+
+                    <div id="showTheme">
+
+                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-secondary">Secondary</button>
+                        <button type="button" class="btn btn-success">Success</button>
+                        <button type="button" class="btn btn-danger">Danger</button>
+                        <button type="button" class="btn btn-warning">Warning</button>
+                        <button type="button" class="btn btn-info">Info</button>
+                        <button type="button" class="btn btn-light">Light</button>
+                        <button type="button" class="btn btn-dark">Dark</button>
+
+                    </div> -->
 
                     <!-- <i id="friends" class="fal fa-user-friends fa-2x mt-5"></i> -->
 
@@ -73,31 +89,48 @@
                     <br>
 
                     <div id="form-div">
-                        
+
                         <form class="form" action="">
+
                             <div class="form-group">
+
                                 <label for="" class="control-form">Title</label>
+
                                 <input id="formTitle" type="text" class="form-control">
+
                             </div>
+
                             <div class="form-group">
+
                                 <label for="">Content</label>
+
                                 <textarea class="form-control" name="description" id="formContent" cols="30" rows="10"></textarea>
+
                             </div>
                             <div class="form-group">
+
                                 <label for="">Type</label>
+
                                 <input type="text" class="form-control" id="formType">
+
                             </div>
                             <div class="form-group">
+
                                 <button id="formButton" type="button" class="btn btn-lg btn-primary">
                                     submit
                                 </button>
+
                             </div>
+
                         </form>
+
                     </div>
 
 
                     <div>
+
                         <ul class="list-group" id="showPosts"></ul>
+
                     </div>
 
 
@@ -105,17 +138,26 @@
                 </div>
 
                 <div class="col-3 mt-5">
+
                     <div id="content">
+
                         <div id="userInfo">
+
                             <h5 class="text-primary">Friends</h5>
-                                <ul id="friendList" class="list-group mt-4 align-top">
-                                    <!-- <li class="list-group-item">
+
+                            <ul id="friendList" class="list-group mt-4 align-top">
+
+                                <!-- <li class="list-group-item">
                                         <img class="rounded" src="http://placehold.it/50/50" alt="dumby image">
                                         <p>Sam</p>
                                     </li> -->
-                                </ul>
+
+                            </ul>
+
                         </div>
+
                     </div>
+
                 </div>
 
             </div>

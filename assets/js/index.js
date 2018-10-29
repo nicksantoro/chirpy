@@ -3,7 +3,7 @@ const newPost = document.getElementById('newPost');
 const formDiv = document.getElementById('form-div');
 const hideForm = document.getElementById('hideForm');
 
-
+// const showTheme = document.getElementById("showThem");
 
 let setUser = function() {
     let currentUser = JSON.parse(localStorage.getItem("user")); 
@@ -140,8 +140,6 @@ formButton.addEventListener('click', () => {
         })
 })
 
-
-
 const renderPost = (content) => {
     return `
     <div class="card w-100 border border-primary borderStyle">
@@ -170,7 +168,6 @@ const renderPost = (content) => {
 
 // FRIENDS
 
-
 const grabFriends = (id) => {
     axios.get(`http://localhost:3000/users/${id}/followers`).then(result => {
         const list = document.getElementById('friendList');
@@ -186,7 +183,7 @@ const grabFriends = (id) => {
 
 const renderFriend = (friend) => {
     return `<li class="list-group-item text-center border border-primary">
-                <i class="fal fa-smile-wink fa-3x p-3" style="color:purple"></i>
+                <i class="fal fa-smile-wink fa-3x p-3" style="color:crimson"></i>
                 <p>${friend.profile_name}</p>
                 <p class="text-secondary">${friend.city}</p>
                 <i id="deleteFriend" class="fal fa-skull-crossbones fa-1x text-danger" onClick="deleteFriend(event)"></i>
@@ -202,6 +199,7 @@ const deleteFriend = (event) => {
     })
 }
 
+
 // <img class="rounded" src="http://placehold.it/50/50" alt="${friend.first_name} ${friend.last_name}">
 
 
@@ -210,3 +208,13 @@ const deleteFriend = (event) => {
  */
 showPosts();
 
+let chirp = document.getElementById("chirp");
+chirp.addEventListener("click", function() {
+    alert("A social platorm for creative writers.")
+})
+
+
+// let theme = document.getElementById("theme");
+// theme.addEventListener("click", function(){
+
+// }
